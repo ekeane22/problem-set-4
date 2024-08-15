@@ -26,55 +26,55 @@ def create_directories(directories):
         os.makedirs(directory, exist_ok=True)
 
 def barplot_for_fta(pred_universe):
-   '''
-   Creates a bar plot out of the pred_universe dataframe for the 'fta' column.
+    '''
+    Creates a bar plot out of the pred_universe dataframe for the 'fta' column.
   
-   Parameter: 
+    Parameter: 
        pred_universe (DF)
       
-   Returns:
+    Returns:
        Bar plot saved as a PNG file
-   '''
-   sns.barplot(data=pred_universe, 
+    '''
+    sns.barplot(data=pred_universe, 
                x='fta',
                y='count')
-   plt.savefig('./data/part3_plots/barplot_1.png', bbox_inches='tight')
+    plt.savefig('./data/part3_plots/barplot_1.png', bbox_inches='tight')
 
 
 # 2. Hue the previous barplot by sex
 def barplot_for_fta_by_sex(pred_universe):
-   '''
-   Creates a bar plot out of the pred_universe dataframe for the 'fta' column and includes a hue for sex.
+    '''
+    Creates a bar plot out of the pred_universe dataframe for the 'fta' column and includes a hue for sex.
   
-   Parameter: 
+    Parameter: 
        pred_universe (DF)
       
-   Returns:
+    Returns:
        Bar plot of the FTA column with a hue by sex, saved as a PNG file
   
-   '''
-   sns.barplot(data=pred_universe,
+    '''
+    sns.barplot(data=pred_universe,
                x='fta', 
                y='count',
                hue='sex')
-   plt.savefig('./data/part3_plots/barplot_2.png', bbox_inches='tight')
+    plt.savefig('./data/part3_plots/barplot_2.png', bbox_inches='tight')
 
 # 3. Plot a histogram of age_at_arrest
 def histogram_age_at_arrest(pred_universe):
-   '''
-   Creates a histogram of the age_at_arrest.
+    '''
+    Creates a histogram of the age_at_arrest.
   
-   Parameter: 
+    Parameter: 
        pred_universe (DF)
       
-   Returns:
+    Returns:
        Histogram of age_at_arrest, saved as a PNG file
   
-   '''
-   sns.histplot(data=pred_universe, 
+    '''
+    sns.histplot(data=pred_universe, 
                 x='age_at_arrest',
                 bins=12)
-   plt.savefig('./data/part3_plots/histogram_1.png', bbox_inches='tight')
+    plt.savefig('./data/part3_plots/histogram_1.png', bbox_inches='tight')
 
 
     # 4. Plot the same histogram, but create bins that represent the following age groups
@@ -83,17 +83,17 @@ def histogram_age_at_arrest(pred_universe):
     #  - 30 to 40
     #  - 40 to 100
 def histogram_age_group_bins(pred_universe):
-   '''
-   Creates a histogram of age_at_arrest with the bins that represent the age groups.
+    '''
+    Creates a histogram of age_at_arrest with the bins that represent the age groups.
   
-   Parameter:
+    Parameter:
        pred_universe (DF)
       
-   Returns:
+    Returns:
        Histogram of age_at_arrest with the bins.
-   '''
-   bins = [18, 21, 30, 40, 100]
-   sns.histplot(data=pred_universe, x='age_at_arrest', bins=bins)
-   plt.savefig('./data/part3_plots/histogram_2.png', bbox_inches='tight')
+    '''
+    bins = [18, 21, 30, 40, 100]
+    sns.histplot(data=pred_universe, x='age_at_arrest', bins=bins)
+    plt.savefig('./data/part3_plots/histogram_2.png', bbox_inches='tight')
    
   
