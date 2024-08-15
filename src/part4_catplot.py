@@ -21,11 +21,9 @@ PART 4: CATEGORICAL PLOTS
 ##  PLOTS  ##
 # 1. Create a catplot where the categories are charge type and the y-axis is the prediction for felony rearrest. Set kind='bar'.
 
-
 # 2. Now repeat but have the y-axis be prediction for nonfelony rearrest
 # 
 # In a print statement, answer the following question: What might explain the difference between the plots?
-
 
 # 3. Repeat the plot from 1, but hue by whether the person actually got rearrested for a felony crime
 # 
@@ -33,3 +31,40 @@ PART 4: CATEGORICAL PLOTS
 # What does it mean that prediction for arrestees with a current felony charge, 
 # but who did not get rearrested for a felony crime have a higher predicted probability than arrestees with a current misdemeanor charge, 
 # but who did get rearrested for a felony crime?
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+import os 
+
+# 1. Using the pre_universe data frame, create a bar plot for the fta column.
+def seaborn_settings():
+    '''
+    Applies the default seaborn theme and sets the default figure size
+    '''
+    sns.set_theme()
+    sns.set(rc={'figure.figsize':(6, 4)})
+
+def create_directories(directories):
+    """
+    Creates the necessary directories for storing plots and data.
+    """
+    for directory in directories:
+        os.makedirs(directory, exist_ok=True)
+
+def catplot(pred_universe): 
+    '''
+    Catplot for prediction of felony rearrest  
+    
+    Parameters: 
+        pred_universe (DF)
+        
+    Returns: 
+
+    
+    '''
+    sns.catplot(data=pred_universe,
+                x='charge_degree',
+                y='prediction_felony',
+                kind='bar')
+    plt.savefit('./data/part4_plots/cat_felony.png', bbox_inches='tight')
+    

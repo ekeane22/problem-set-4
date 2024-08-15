@@ -37,4 +37,12 @@ def extract_transform():
     charge_counts = arrest_events.groupby(['charge_degree']).size().reset_index(name='count')
     charge_counts_by_offense = arrest_events.groupby(['charge_degree', 'offense_category']).size().reset_index(name='count')
     
-    return pred_universe, arrest_events, charge_counts, charge_counts_by_offense
+    #creating the felony_chart dataframe using groupby, lambda and .any
+    
+    felony_charge = (arrest_events.groupby('arrest_id')
+                     .agg(has_felony_charge=('charge_degree', lambda x: (x == 'felony').any()))
+                     .reset_index())
+    # Mergeing felony_charge with pred_universe on arrest_id 
+    new_df = pred_universe.merge(felony_charge, on='arrest_id', how='left')
+
+    return pred_universe, arrest_events, charge_counts, charge_counts_by_offense, felony_charge, new_df
