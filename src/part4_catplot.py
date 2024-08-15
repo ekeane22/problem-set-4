@@ -51,7 +51,7 @@ def create_directories(directories):
     for directory in directories:
         os.makedirs(directory, exist_ok=True)
 
-def catplot(pred_universe): 
+def catplot_felony(felony_charge): 
     '''
     Catplot for prediction of felony rearrest  
     
@@ -59,12 +59,47 @@ def catplot(pred_universe):
         pred_universe (DF)
         
     Returns: 
-
-    
+        Catplot saved as a png that shows felony predictions.
     '''
-    sns.catplot(data=pred_universe,
+    
+    sns.catplot(data=felony_charge,
                 x='charge_degree',
                 y='prediction_felony',
                 kind='bar')
-    plt.savefit('./data/part4_plots/cat_felony.png', bbox_inches='tight')
+    plt.savefig('./data/part4_plots/catplot_1.png', bbox_inches='tight')
     
+def catplot_nonfelony(felony_charge):
+    '''
+    Creates a catplot that shows the nonfelony prediction.
+    
+    Parameter:
+        pred_universe (DF)
+        
+    Returns: 
+        Catplot saved as a png that shows predictions for non-felony arrests. 
+    '''
+    sns.catplot(data=felony_charge,
+                x='charge_degree',
+                y='prediction_nonfelony',
+                kind='bar')
+    plt.savefig('./data/part4_plots/catplot_2.png', bbox_inches='tight')
+    
+    
+    
+def catplot_felony_with_hue(felony_charge):
+    '''
+    Creates a catplot that shows the nonfelony prediction.
+    
+    Parameter:
+        pred_universe (DF)
+        
+    Returns: 
+        Catplot saved as a png that shows predictions for felony arrests with a hue by felony charge. 
+    '''
+    sns.catplot(data=felony_charge, 
+                x='charge_degree',
+                y='prediction_felony', 
+                hue='has_felony_charge', 
+                kind='bar')
+    plt.savefig('./data/part4_plots/catplo_3.png', bbox_inches='tight')
+

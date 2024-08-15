@@ -36,8 +36,9 @@ def barplot_for_fta(pred_universe):
        Bar plot saved as a PNG file
    '''
    sns.barplot(data=pred_universe, 
-               x='fta')
-   plt.savefig('./data/part3_plots/barplot_for_fta.png', bbox_inches='tight')
+               x='fta',
+               y='count')
+   plt.savefig('./data/part3_plots/barplot_1.png', bbox_inches='tight')
 
 
 # 2. Hue the previous barplot by sex
@@ -53,8 +54,10 @@ def barplot_for_fta_by_sex(pred_universe):
   
    '''
    sns.barplot(data=pred_universe,
-               x='fta', hue='sex')
-   plt.savefig('./data/part3_plots/barplot_fta_by_sex.png', bbox_inches='tight')
+               x='fta', 
+               y='count',
+               hue='sex')
+   plt.savefig('./data/part3_plots/barplot_2.png', bbox_inches='tight')
 
 # 3. Plot a histogram of age_at_arrest
 def histogram_age_at_arrest(pred_universe):
@@ -69,8 +72,9 @@ def histogram_age_at_arrest(pred_universe):
   
    '''
    sns.histplot(data=pred_universe, 
-                x='age_at_arrest')
-   plt.savefig('./data/part3_plots/histogram_age_at_arrest.png', bbox_inches='tight')
+                x='age_at_arrest',
+                bins=12)
+   plt.savefig('./data/part3_plots/histogram_1.png', bbox_inches='tight')
 
 
     # 4. Plot the same histogram, but create bins that represent the following age groups
@@ -90,6 +94,6 @@ def histogram_age_group_bins(pred_universe):
    '''
    bins = [18, 21, 30, 40, 100]
    sns.histplot(data=pred_universe, x='age_at_arrest', bins=bins)
-   plt.savefig('./data/part3_plots/histogram_age_groups.png', bbox_inches='tight')
+   plt.savefig('./data/part3_plots/histogram_2.png', bbox_inches='tight')
    
   
